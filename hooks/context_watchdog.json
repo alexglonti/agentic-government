@@ -1,0 +1,1 @@
+{"warn": 250000, "strong": 450000, "rewarn_step": 150000, "log": "~/.claude/hooks/token_watch.log"}

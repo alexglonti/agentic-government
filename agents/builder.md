@@ -16,3 +16,4 @@ Rules:
 - Change only what the task requires. If you notice unrelated problems, report them in your final message; don't fix them.
 - Before starting, state how you'll verify the result (a log line, a screenshot, a file check), and report that evidence when done, not just "done".
 - If the brief has two plausible readings, say which one you chose and why in one line; stop and report if the choice is costly or irreversible.
+- Token budget: at about 300K context or 150 turns, stop, write a state note (done, left, next step) and hand back so the manager can restart you fresh. Tuning loops (tweak, test, repeat) get at most 3 tries, then report instead of continuing.

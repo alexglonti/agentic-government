@@ -59,6 +59,29 @@ These are one team's numbers over a short window. Treat them as an example of wh
 
 If your plan lacks a model, change the `model:` line in that agent file.
 
+## Token budget / context watchdog
+
+Every reply re-sends the whole conversation, so cost grows with length: in a long agent day about 99.9% of tokens were cache reads of re-sent context, and a turn at 900K context costs roughly 4x one at 250K. The rules:
+
+- Builders hand back at ~300K context or 150 turns with a state note (done, left, next step); a fresh agent continues.
+- Tuning loops get at most 3 tries, then report.
+- Use the strongest model only where the job needs it.
+- When the manager's own context gets long it writes a memory handoff and restarts.
+- `hooks/context_watchdog.py` warns *you* (250K, then 450K, then every +150K) and logs it.
+
+Install: copy `hooks/` to `~/.claude/hooks/` and add to `~/.claude/settings.json` (use `python3` on macOS/Linux; on Windows use the full path to `python.exe` if `python` is not on PATH):
+
+```json
+{
+  "hooks": {
+    "Stop":         [{"hooks": [{"type": "command", "command": "python ~/.claude/hooks/context_watchdog.py", "timeout": 5}]}],
+    "SubagentStop": [{"hooks": [{"type": "command", "command": "python ~/.claude/hooks/context_watchdog.py", "timeout": 5}]}]
+  }
+}
+```
+
+Thresholds and the log path live in `context_watchdog.json` (default log `~/.claude/hooks/token_watch.log`; the `AG_TOKEN_LOG` environment variable overrides it).
+
 ## When not to use it
 
 A quick question or a one-file edit: just ask normally. Delegation has overhead and pays off on jobs with several independent pieces or long chores.
@@ -68,6 +91,7 @@ A quick question or a one-file edit: just ask normally. Delegation has overhead 
 - `skills/agentic-government/SKILL.md` — the manager's playbook: tiers, how to run a job, when not to delegate, the efficiency rules
 - `agents/` — the eight worker files (runner, researcher, builder, checker, chronicler, housekeeper, muse, treasurer)
 - `ledger-template.md` — the ledger columns
+- `hooks/context_watchdog.py` — Stop/SubagentStop hook that warns when context gets long
 - `tools/measure_sessions.py` — read-only session metrics (numbers only, no message text)
 
 ## Licence
