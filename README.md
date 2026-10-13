@@ -2,7 +2,7 @@
 
 **Run Claude Code like a small, well-run government.** One *manager* model talks to you and plans the work. It delegates each piece to a cheaper or stronger worker model according to how hard the task is. A top-tier *checker* verifies the result before anything counts as done. A *ledger* records the cost, time, checker verdicts and rework of every job, so you can see whether the whole arrangement actually saves you tokens and time.
 
-By Aleksandre Glonti · Nomad Devs (nomaddevs.club)
+By Alex Glonti · Nomad Devs (nomaddevs.club)
 
 Status: **v0.1** — extracted from a few days of real use on a solo studio's release work. The structure is stable; the numbers below are early.
 
@@ -74,4 +74,4 @@ A quick question or a one-file edit: just ask normally. Delegation has overhead 
 
 MIT. See [LICENSE](LICENSE).
 
-By Aleksandre Glonti · Nomad Devs (nomaddevs.club)
+By Alex Glonti · Nomad Devs (nomaddevs.club)
