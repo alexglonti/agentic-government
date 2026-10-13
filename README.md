@@ -4,7 +4,7 @@
 
 By Alex Glonti · Nomad Devs (nomaddevs.club)
 
-Status: **v0.1** — extracted from a few days of real use on a solo studio's release work. The structure is stable; the numbers below are early.
+Status: **v0.1** — extracted from a few days of real use on a two-person studio's release work. The structure is stable; the numbers below are early.
 
 ## The roles
 
@@ -36,7 +36,7 @@ Most multi-agent setups stall the same way: nobody in charge, nobody checking, c
 
 ## Real-world example (generic)
 
-A solo game studio used this setup to ship a mobile game update over a weekend, on Android and iOS, with one human in the loop. Counting by hand from the first three days of its ledger:
+A two-person game studio used this setup to ship a mobile game update over a weekend, on Android and iOS, with the developers making the decisions and the final clicks. Counting by hand from the first three days of its ledger:
 
 - About **57 logged jobs** in three days: builds, store-listing and website drafts, art and audio passes, research, clean-ups, media cuts.
 - **12 jobs went through the checker with a PASS**, and **5 jobs drew at least one FIX-NEEDED** (8 FIX-NEEDED verdicts in total). Catches included confidential wording in a draft public text, a build number the store would have rejected, a draft that contradicted the real product, and image faults.
